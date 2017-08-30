@@ -21,14 +21,12 @@
                 <input type="file" name="imported-file"/>
               </div>
               <div class="col-md-6">
-                  <button class="btn btn-primary" type="submit">Import</button>
+                  <button class="btn btn-primary" type="submit">Importar Archivo</button>
               </div>
             </form>
           </div>
         </div>
-        <div class="col-md-2">
-          <button class="btn btn-success">Export</button>
-        </div>
+        
       </div>
     </div>
   </body>

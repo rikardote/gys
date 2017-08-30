@@ -20,28 +20,62 @@ class ItemController extends Controller
         return view('items');
     }
     public function import(Request $request)
-        {
-          if($request->file('imported-file'))
+    {
+      if($request->file('imported-file'))
+      {
+                $path = $request->file('imported-file')->getRealPath();
+                $data = Excel::load($path, function($reader)
           {
-                    $path = $request->file('imported-file')->getRealPath();
-                    $data = Excel::load($path, function($reader) {
                 })->get();
 
-                if(!empty($data) && $data->count())
+          if(!empty($data) && $data->count())
           {
-            $data = $data->toArray();
-            for($i=0;$i<count($data);$i++)
+            foreach ($data->toArray() as $row)
             {
-              $dataImported[] = $data[$i];
-            }
-                }
-          Report::insert($dataImported);
-            }
-            
-            $items = Report::All();
-            return view('listado')->with('items', $items);
+              if(!empty($row))
+              {
+                $dataArray[] =
+                [
+                  'nombre_suplente' => $row['nombre_suplente'],
+                  'puesto' => getPuesto($row['puesto']),
+                  'servicio' => getServicio($row['servicio']),
+                  'unidad' => getUnidad($row['unidad']),
+                  'fecha_inicio' => fecha_dmy($row['fecha_inicio']),
+                  'fecha_final' => fecha_dmy($row['fecha_final']),
+                  'qna' => $row['qna'],
+                  'num_empleado_trabajador' => getEmpleado($row['num_empleado_trabajador']),
+                  'cod_incidencia' => getIncidencia($row['cod_incidencia'])
+                ];
+              }
+          }
+          if(!empty($dataArray))
+          {
+             Report::insert($dataArray);
+             
 
-      }
+           }
+         }
+       }
+      $items = Report::all();
+      Excel::create('items', function($excel) use($items) {
+          $excel->sheet('ExportFile', function($sheet) use($items) {
+              $sheet->fromArray($items);
+          });
+      })->export('xls');
+
+      //return view('listado')->with('items', $items);
+    }
+
+
+      public function export(){
+          $items = Report::all();
+          Excel::create('items', function($excel) use($items) {
+              $excel->sheet('ExportFile', function($sheet) use($items) {
+                  $sheet->fromArray($items);
+              });
+          })->export('xls');
+
+        }
     /**
      * Show the form for creating a new resource.
      *
