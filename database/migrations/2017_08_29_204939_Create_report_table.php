@@ -21,8 +21,9 @@ class CreateReportTable extends Migration
             $table->string('fecha_inicio');
             $table->string('fecha_final');
             $table->integer('qna');
-            $table->integer('num_empleado_trabajador');
+            $table->string('num_empleado_trabajador');
             $table->string('cod_incidencia');
+            $table->float('percepcion');
         });
     }
 

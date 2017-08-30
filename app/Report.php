@@ -18,7 +18,8 @@ class Report extends Model
       'fecha_final',
       'qna',
       'num_empleado_trabajador',
-      'cod_incidencia'
+      'cod_incidencia',
+      'percepcion'
     ];
 }
 

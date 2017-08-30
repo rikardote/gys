@@ -36,7 +36,8 @@ class ItemController extends Controller
                   'fecha_final' => fecha_dmy($row['fecha_final']),
                   'qna' => $row['qna'],
                   'num_empleado_trabajador' => getEmpleado($row['num_empleado_trabajador']),
-                  'cod_incidencia' => getIncidencia($row['cod_incidencia'])
+                  'cod_incidencia' => getIncidencia($row['cod_incidencia']),
+                  'percepcion' => $row['percepcion']
                 ];
               }
           }
