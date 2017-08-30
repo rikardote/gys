@@ -52,8 +52,8 @@
               <td>{{getPuesto($item->puesto)}}</td>
               <td>{{getServicio($item->servicio)}}</td>
               <td>{{getUnidad($item->unidad)}}</td>
-              <td>{{$item->fecha_inicio}}</td>
-              <td>{{$item->fecha_final}}</td>
+              <td>{{fecha_dmy($item->fecha_inicio)}}</td>
+              <td>{{fecha_dmy($item->fecha_final)}}</td>
               <td>{{$item->qna}}</td>
               <td>{{getEmpleado($item->num_empleado_trabajador)}}</td>
               <td>{{getIncidencia($item->cod_incidencia)}}</td>

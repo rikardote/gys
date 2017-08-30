@@ -14,7 +14,7 @@ function fecha_dmy($date){
 	return date('d/m/Y', strtotime(str_replace('/', '-', $date)));
 }
 function getEmpleado($num_empleado){
-  $empleado = Empleado::where('num_empleado', $num_empleado)->first();
+  $empleado = Empleado::where('num_empleado', 'like', '%'.$num_empleado.'%')->first();
   return $empleado['nombre'];
 }
 function getIncidencia($incidencia){
@@ -26,10 +26,10 @@ function getPuesto($puesto){
   return $puesto['descripcion'];
 }
 function getServicio($servicio){
-  $servicio = Servicio::where('servicio', $servicio)->first();
+  $servicio = Servicio::where('servicio', 'like', '%'.$servicio.'%')->first();
   return $servicio['descripcion'];
 }
 function getUnidad($unidad){
-  $unidad = Unidad::where('clave', $unidad)->first();
+  $unidad = Unidad::where('clave', 'like', '%'.$unidad.'%')->first();
   return $unidad['descripcion'];
 }
