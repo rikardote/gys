@@ -13,6 +13,8 @@ class ItemController extends Controller
 
     public function import(Request $request)
     {
+      Report::truncate();
+      
       if($request->file('imported-file'))
       {
                 $path = $request->file('imported-file')->getRealPath();
@@ -55,5 +57,7 @@ class ItemController extends Controller
               $sheet->fromArray($items);
           });
       })->export('xls');
+    
     }
+
 }
