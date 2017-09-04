@@ -14,7 +14,7 @@ function fecha_dmy($date){
 	return date('d/m/Y', strtotime(str_replace('/', '-', $date)));
 }
 function getEmpleado($num_empleado){
-  $empleado = Empleado::where('num_empleado', 'like', '%'.$num_empleado.'%')->first();
+  $empleado = Empleado::where('num_empleado', $num_empleado)->first();
   if ($empleado) {
     return $empleado['nombre'];
   }
