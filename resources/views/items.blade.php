@@ -11,6 +11,7 @@
   <body>
     <div class="container">
       <br />
+      IMPORTAR ARCHIVO EXCEL
       <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-6">
@@ -22,6 +23,28 @@
               </div>
               <div class="col-md-6">
                   <button class="btn btn-primary" type="submit">Importar Archivo</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+        <div class="container">
+      <br />
+      IMPORTAR PARTE FIJA DE INTERNOS
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-6">
+          <div class="row">
+            <form action="{{url('items/partefija')}}" method="post" enctype="multipart/form-data">
+              <div class="col-md-6">
+                {{csrf_field()}}
+                <input type="file" name="imported-file2"/>
+              </div>
+              <div class="col-md-6">
+                  <button class="btn btn-primary" type="submit">Importar PARTE FIJA</button>
               </div>
             </form>
           </div>

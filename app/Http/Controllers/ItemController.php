@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Excel;
 use App\Report;
+use App\Empleado;
 
 class ItemController extends Controller
 {
@@ -57,6 +58,50 @@ class ItemController extends Controller
               $sheet->fromArray($items);
           });
       })->export('xls');
+    
+    }
+
+    public function import_parte(Request $request)
+    {
+      Empleado::truncate();
+      
+      if($request->file('imported-file2'))
+      {
+                $path = $request->file('imported-file2')->getRealPath();
+                $data = Excel::load($path, function($reader)
+          {
+                })->get();
+
+          if(!empty($data) && $data->count())
+          {
+            foreach ($data->toArray() as $row)
+            {
+              if(!empty($row))
+              {
+                $dataArray[] =
+                [
+                  'num_empleado' => $row['num_empleado'],
+                  'nombre' => $row['nombre']
+                ];
+              }
+          }
+          if(!empty($dataArray))
+          {
+             Empleado::insert($dataArray);
+             
+
+           }
+         }
+       }
+      //$items = Empleado::all();
+      //$items->save();
+      
+      /*Excel::create('items', function($excel) use($items) {
+          $excel->sheet('ExportFile', function($sheet) use($items) {
+              $sheet->fromArray($items);
+          });
+      })->export('xls');
+      */
     
     }
 

@@ -9,6 +9,21 @@
   <body>
     <div class="container">
       <br />
+      IMPORTAR SUPLENCIAS
+      <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-2">
+          <button class="btn btn-primary">Import</button>
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-success">Export</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <br />
+      IMPORTAR PARTE FIJA DE INTERNOS
       <div class="row">
         <div class="col-md-8"></div>
         <div class="col-md-2">
