@@ -95,6 +95,8 @@ class ItemController extends Controller
        }
       //$items = Empleado::all();
       //$items->save();
+       $conteo = Empleado::all()->count();
+       echo "Se agregaron ".$conteo." empleados";
       
       /*Excel::create('items', function($excel) use($items) {
           $excel->sheet('ExportFile', function($sheet) use($items) {
